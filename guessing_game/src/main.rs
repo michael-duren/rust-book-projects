@@ -1,8 +1,12 @@
+use rand::Rng;
 use std::io; // bring in the io lib into scope, comes from standard lib
 
 // fn main is the input of the program
 fn main() {
     println!("Guess the number!"); // macro print!
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+    println!("The secret number is: {secret_number}");
 
     println!("Please input your guess.");
 
@@ -19,4 +23,8 @@ fn main() {
         .expect("Failed to read line"); // read_line returns a Result which is a enum which is a type that can be in multiple states
 
     println!("You guessed: {guess}");
+
+    /*
+     * Left off at pg. 59 in book
+     */
 }
