@@ -1,1 +1,0 @@
-/Users/michaelduren/Code/learning/rust/rust-book/rust-book-projects/chapter-5-exercises/target/debug/chapter-5-exercises: /Users/michaelduren/Code/learning/rust/rust-book/rust-book-projects/chapter-5-exercises/src/main.rs
