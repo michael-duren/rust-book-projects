@@ -29,6 +29,24 @@ fn get_mode(ints: &Vec<i32>) -> i32 {
     return *result;
 }
 
+fn convert_to_pig_latin(word: &str) -> String {
+    let mut chars = word.chars();
+    let first_char = chars.next().unwrap();
+
+    if first_char == 'a'
+        || first_char == 'e'
+        || first_char == 'i'
+        || first_char == 'o'
+        || first_char == 'u'
+    {
+        // result.push_str(word);
+        // result.push_str("-hay");
+        return String::from(format!("{}-hay", word));
+    }
+
+    return String::from(format!("{}-{}ay", &word[1..], first_char));
+}
+
 fn main() {
     let mut ints = vec![32, 5, 6, 100, 230, 432, 10, 6];
     // get median
@@ -38,4 +56,6 @@ fn main() {
 
     println!("{}", median);
     println!("{}", mode);
+
+    assert_eq!(String::from("irst-fay"), convert_to_pig_latin("first"));
 }
