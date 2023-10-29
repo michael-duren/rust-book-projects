@@ -1,3 +1,5 @@
+use std::{error::Error, fmt::Display};
+
 pub trait Summary {
     fn summarize_author(&self) -> String;
     // default impl
@@ -33,6 +35,27 @@ impl Summary for Tweet {
     }
 }
 
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        return Self { x, y };
+    }
+}
+
+impl<T: Display + PartialOrd> Pair<T> {
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest member is x = {}", self.x);
+        } else {
+            println!("The largest member is y = {}", self.y);
+        }
+    }
+}
+
 // use trait as func parameter
 // pub fn notify(item: &impl Summary) {
 //     println!("Breaking news! {}", item.summarize());
@@ -56,10 +79,12 @@ fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
     return largest;
 }
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     let number_list = vec![34, 50, 25, 100, 65];
 
     let largest_num = largest(&number_list);
 
     println!("The largest number is {}", largest_num);
+
+    return Ok(());
 }
